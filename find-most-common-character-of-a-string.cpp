@@ -3,19 +3,20 @@
 
 bool findMostCommonChar(const char* words, char& winner)
 {
+    const int kAsciiCount = 128;
     if (words == NULL)
     {
         return false;
     }
     size_t length = strlen(words);
-    int counts[256] = {};
+    int counts[kAsciiCount] = {};
     for (size_t i=0;i<length;i++)
     {
         counts[words[i]]++;
     }
 
     int winnerCount = 0;
-    for (size_t i=0;i<256;i++)
+    for (size_t i=0;i<kAsciiCount;i++)
     {
         if (counts[i] > winnerCount)
         {
@@ -48,6 +49,7 @@ int main()
     test("!");
     test(NULL);
     test(nullptr);
+    test("测试通过");
 
     return 0;
 }
